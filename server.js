@@ -10,12 +10,12 @@ const connectDb = require('./config/db')
 
 
 dotenv.config()
+app.use(cors())
+
+require("./routes/index.routes")(app)
+
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(cors({
-    origin: "*"
-}))
-
 const PORT = 5000
 
 const helloworld = (req, res) =>{

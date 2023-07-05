@@ -11,7 +11,7 @@ const newToDo = async (req, res, next) => {
       user: user,
       title: title,
       body: body,
-      user: req.user.id
+      user: req.user.name
     });
 
     await toDo.save();

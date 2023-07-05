@@ -6,9 +6,7 @@ const ListModel = new mongoose.Schema({
         required : true,
         ref: "User"
     },
-    date:{
-        type: Date.now()
-    },
+   
     title:{
         type: String,
     },

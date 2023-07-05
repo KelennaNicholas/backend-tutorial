@@ -11,7 +11,6 @@ const newToDo = async (req, res, next) => {
       user: user,
       title: title,
       body: body,
-      date: date,
       user: req.user.id
     });
 

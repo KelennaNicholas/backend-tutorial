@@ -3,7 +3,7 @@ const Joi = require("joi");
 const registerSchema = Joi.object({
   name: Joi.string().min(3).max(30).required(),
 
-  age: Joi.number().min(5).max(50).required(),
+  age: Joi.number().min(5).max(50),
 
   email: Joi.string().email().required(),
 

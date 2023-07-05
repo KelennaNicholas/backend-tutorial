@@ -11,7 +11,7 @@ dotenv.config();
 const register = async (req, res, next) => {
   try {
     console.log(req.body);
-    const { name, age, email, gender, password } = req.body;
+    const { name, email, password, confirm_password } = req.body;
     // Check if user exists by email
 
     const findUser = await User.findOne({ email });
@@ -30,10 +30,9 @@ const register = async (req, res, next) => {
     //   console.log("usePassword:", usePassword)
     const user = await new User({
       name: name,
-      age: age,
       email: email,
-      gender: gender,
       password: hashedPassword,
+      confirm_password: confirm_password
     });
     await user.save();
 

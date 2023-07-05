@@ -23,6 +23,9 @@ const UserModel = new mongoose.Schema({
         type: String,
         required: [true, "password is required"]
     },
+    confirm_password:{
+        type: String
+    },
     token: {
         type: String,
         default: null

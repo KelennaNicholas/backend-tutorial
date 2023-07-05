@@ -25,7 +25,6 @@ const register = async (req, res, next) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    console.log(hashedPassword);
 
     // const usePassword = await jwt.sign({password}, process.env.JWT_SECRET, { algorithm: 'HS256' });
     //   console.log("usePassword:", usePassword)

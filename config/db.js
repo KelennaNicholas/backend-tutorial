@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const connectDb = async () => {
   try {
-    const conn = await mongoose.connect("mongodb://127.0.0.1:27017/tutorial", {
+    const conn = await mongoose.connect("mongodb+srv://Kelenna:Niklauz2497@cluster0.rdbnat3.mongodb.net/", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       //    useCreateIndex: true

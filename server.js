@@ -1,6 +1,6 @@
 
 const express = require("express")
-// const cors = require("cors")
+const cors = require("cors")
 const app = express()
 const userRoutes = require("./routes/user.route")
 const toDoRoutes = require("./routes/todo.route")
@@ -12,6 +12,9 @@ const connectDb = require('./config/db')
 dotenv.config()
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(cors({
+    origin: "*"
+}))
 
 const PORT = 5000
 

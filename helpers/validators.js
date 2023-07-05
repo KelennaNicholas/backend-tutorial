@@ -11,7 +11,7 @@ const registerSchema = Joi.object({
 
   password: Joi.string().min(8).required(),
 
-  repeat_password: Joi.ref("password"),
+  confirm_password: Joi.ref("password"),
  
 })
  

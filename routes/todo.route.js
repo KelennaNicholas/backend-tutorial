@@ -1,6 +1,6 @@
 const express = require("express")
 const toDoController = require ("../controllers/todo.controllers")
-const {authenticateJWT} = require("../middleware/authmiddleware")
+const {authenticateJWT} = require ("../middleware/authmiddleware")
 const router = express.Router()
 
 router.post("/new", authenticateJWT,  toDoController.newtodo)

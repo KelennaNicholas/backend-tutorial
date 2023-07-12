@@ -16,7 +16,7 @@ require("./routes/index.routes")(app)
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-const PORT = process.env.PORT
+const PORT = 5000
 
 const helloworld = (req, res) =>{
     res.send("Hello World!")

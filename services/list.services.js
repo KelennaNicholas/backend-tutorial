@@ -5,11 +5,12 @@ const User = require ("../models/User")
 const newToDo = async (req, res, next) => {
   try {
     console.log(req.body);
-    const { user, title, body } = req.body;
+    const { user, title, body, time  } = req.body;
 
     const toDo = await new List({
       title: title,
       body: body,
+      time:time,
       user: req.user.id
     });
 
@@ -82,8 +83,9 @@ const deleteToDo = async (req, res) => {
       });
     // const userId = new mongoose.Types.ObjectId(id)
     const toDo = await List.findByIdAndDelete(id);
+
+      
     
-   
       return res.status(200).json({
         message: "Item deleted successfully",
         success: true,

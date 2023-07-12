@@ -7,6 +7,7 @@ router.post("/new", authenticateJWT,  toDoController.newtodo)
 
 router.get("/:id", authenticateJWT, toDoController.gettodo)
 
+router.get("/",authenticateJWT, toDoController.getalltodo)
 
 router.delete("/delete/:id", authenticateJWT, toDoController.deletetodo)
 

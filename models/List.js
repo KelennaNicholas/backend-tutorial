@@ -13,6 +13,9 @@ const ListModel = new mongoose.Schema({
     body:{
         type: String,
     },
+    time:{
+        type: Date
+    }
    
 })
 

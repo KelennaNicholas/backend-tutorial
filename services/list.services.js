@@ -8,10 +8,9 @@ const newToDo = async (req, res, next) => {
     const { user, title, body } = req.body;
 
     const toDo = await new List({
-      user: user,
       title: title,
       body: body,
-      user: req.user.name
+      user: req.user.id
     });
 
     await toDo.save();
@@ -59,7 +58,7 @@ const getAllToDo = async (req, res, next) => {
         success: false,
         message: "Invalid page",
       });
-    const todos = await List.find()
+    const todos = await List.find({user: req.user.id})
       .skip(usePage * limit)
       .limit(limit);
     return res.status(200).json({
@@ -83,12 +82,14 @@ const deleteToDo = async (req, res) => {
       });
     // const userId = new mongoose.Types.ObjectId(id)
     const toDo = await List.findByIdAndDelete(id);
-
-    return res.status(200).json({
-      message: "Item deleted successfully",
-      success: true,
-      toDo: toDo,
-    });
+    
+   
+      return res.status(200).json({
+        message: "Item deleted successfully",
+        success: true,
+        toDo: toDo,
+      });
+    
   } catch (err) {
     console.log(err);
   }

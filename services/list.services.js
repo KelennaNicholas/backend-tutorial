@@ -1,10 +1,9 @@
-const List = require("../models/List");
+const List = require ("../models/List");
 const User = require ("../models/User")
 
 // Creating a new to do item
 const newToDo = async (req, res, next) => {
   try {
-    console.log(req.body);
     const { user, title, body, time  } = req.body;
 
     const toDo = await new List({

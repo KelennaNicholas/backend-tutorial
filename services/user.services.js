@@ -46,6 +46,8 @@ const register = async (req, res, next) => {
 
     user.password = "hidden";
 
+    user.confirm_password = "hidden";
+
     // res.cookie("jwt", Access_Token)
 
     if (!user)

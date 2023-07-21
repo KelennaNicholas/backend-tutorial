@@ -181,7 +181,7 @@ const login = async (req, res, next) => {
     //   });
 
     if (!(user && (await bcrypt.compare(password, user.password)))) {
-      return res.status(400).json({ message: "Failure" });
+      return res.status(400).json({ message: "Login failed. " });
     } else {
       const token = jwt.sign({ id: user._id, name: user.name }, process.env.JWT_SECRET,);
       return res.status(200).header("auth-token", token).json({ message: "Success" ,  "token": token });

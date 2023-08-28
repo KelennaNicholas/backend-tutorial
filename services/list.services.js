@@ -1,16 +1,16 @@
-const List = require ("../models/List");
-const User = require ("../models/User")
+const List = require("../models/List");
+const User = require("../models/User");
 
 // Creating a new to do item
 const newToDo = async (req, res, next) => {
   try {
-    const { user, title, body, time  } = req.body;
+    const { user, title, body, time } = req.body;
 
     const toDo = await new List({
       title: title,
       body: body,
-      time:time,
-      user: req.user.id
+      time: Date.now().toString(),
+      user: req.user.id,
     });
 
     await toDo.save();
@@ -58,7 +58,7 @@ const getAllToDo = async (req, res, next) => {
         success: false,
         message: "Invalid page",
       });
-    const todos = await List.find({user: req.user.id})
+    const todos = await List.find({ user: req.user.id })
       .skip(usePage * limit)
       .limit(limit);
     return res.status(200).json({
@@ -83,14 +83,11 @@ const deleteToDo = async (req, res) => {
     // const userId = new mongoose.Types.ObjectId(id)
     const toDo = await List.findByIdAndDelete(id);
 
-      
-    
-      return res.status(200).json({
-        message: "Item deleted successfully",
-        success: true,
-        toDo: toDo,
-      });
-    
+    return res.status(200).json({
+      message: "Item deleted successfully",
+      success: true,
+      toDo: toDo,
+    });
   } catch (err) {
     console.log(err);
   }

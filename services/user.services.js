@@ -25,9 +25,6 @@ const register = async (req, res, next) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-
-    // const usePassword = await jwt.sign({password}, process.env.JWT_SECRET, { algorithm: 'HS256' });
-    //   console.log("usePassword:", usePassword)
     const user = await new User({
       name: name,
       email: email,
@@ -169,19 +166,9 @@ const login = async (req, res, next) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
 
-    // const decoded = jwt.verify(user.password, process.env.JWT_SECRET)
-    // if(password !== decoded) return res.status(400).json({
-    //     success :false,
-    //     error: "Invalid credentials"
-    // })
-    // if (user === null)
-    //   return res.status(400).json({
-    //     success: false,
-    //     error: "User not found",
-    //   });
 
     if (!(user && (await bcrypt.compare(password, user.password)))) {
-      return res.status(400).json({ message: "Login failed. " });
+      return res.status(400).json({ message: "Login failed." });
     } else {
       const token = jwt.sign({ id: user._id, name: user.name }, process.env.JWT_SECRET,);
       return res.status(200).header("auth-token", token).json({ message: "Success" ,  "token": token });
@@ -192,11 +179,6 @@ const login = async (req, res, next) => {
     console.log(err);
   }
 
-  // return res.status(200).json({
-  //   message: "successful",
-  //   user: decoded,
-  // });
-  // console.log("Decoded: ", decoded)
 };
 
 
@@ -209,3 +191,4 @@ module.exports = {
   deleteUser,
   updateUser,
 };
+

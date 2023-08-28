@@ -16,11 +16,10 @@ require("./routes/index.routes")(app)
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+
 const PORT = 5000
 
-const helloworld = (req, res) =>{
-    res.send("Hello World!")
-}
+
  
 app.use("/users", userRoutes)
 
